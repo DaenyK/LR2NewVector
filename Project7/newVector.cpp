@@ -58,7 +58,7 @@ double & Vector::pushBack(double e)
 		double*tmp;
 		tmp = new double[buf_size];
 
-		for (int i = 0;i < size();i++)
+		for (int i = 0; i < size(); i++)
 			tmp[i] = els[i];
 
 		delete[]els;
@@ -92,11 +92,50 @@ bool Vector :: operator==(Vector obj)
 		return false;
 	else
 	{
-		for (int i = 0; i < size();i++)
+		for (int i = 0; i < size(); i++)
 		{
 			if (els[i] != obj.els[i])
 				return false;
 		}
 	}
 	return true;
+}
+
+bool Vector::operator!=(Vector obj)
+{
+	if (size() != obj.size())
+		return true;
+	else
+	{
+		for (int i = 0; i < size(); i++)
+		{
+			if (els[i] != obj.els[i])
+				return true;
+		}
+	}
+}
+
+Vector Vector::operator+(Vector obj)
+{
+	for (int i = 0; i < this->size(); i++)
+	{
+		this->els[i] += obj.els[i];
+	}
+	return *this;
+}
+
+Vector Vector::operator-(Vector obj)
+{
+	for (int i = 0; i < this->size(); i++)
+	{
+		for (int j = 0; j < obj.size(); j++)
+		{
+			if (this->els[i] == obj.els[j])
+			{
+				this->els[i] = this->els[i + 1];
+				this->cur_size--;
+			}
+		}
+	}
+	return *this;
 }

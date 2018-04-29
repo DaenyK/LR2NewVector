@@ -1,4 +1,8 @@
 #pragma once
+#include <iostream>
+
+using namespace std;
+
 class Vector
 {
 private:
@@ -21,7 +25,6 @@ public:
 
 
 
-
 	//operators
 	Vector operator=(const Vector & obj); //оператор присваивания
 	double & operator[](int index); //вытаскивание элемента из указанной позиции
@@ -29,7 +32,13 @@ public:
 
 	double & pushBack(double e);		  //добавление элемента в конец
 	double & at(int index);   //вытаскивание элемента из указанной позиции
+	
 	bool operator ==(Vector  obj);
+	bool operator !=(Vector  obj);
+
+
+	Vector operator+(Vector obj);
+	Vector operator-(Vector obj);
 	
 
 	~Vector()
