@@ -139,3 +139,63 @@ Vector Vector::operator-(Vector obj)
 	}
 	return *this;
 }
+
+Vector Vector:: operator>>(double e) 
+{
+	if (buf_size <= 0)
+	{
+		buf_size = 2;
+
+		els = new double[buf_size];
+	}
+	else
+	{
+		if (cur_size >= buf_size)
+			buf_size *= 2;
+		double*tmp;
+		tmp = new double[buf_size];
+
+		for (int i = 0; i < size(); i++)
+			tmp[i] = els[i];
+
+		delete[]els;
+		els = tmp;
+	}
+
+	els[cur_size++] = e;
+	return els[cur_size - 1];
+}
+Vector Vector:: operator<<(double e)
+{
+	for (int i = e - 1; i < cur_size; i++)
+		els[i] = els[i + 1];
+	cur_size--;
+	return *this;
+}
+
+Vector Vector::operator~()
+{
+	for (int i = 0; i < this->size()-1; i++)
+	{
+		for (int j = i+1; j < this->size(); j++)
+		{
+			if (this->els[i] ==this->els[j])
+			{
+				for (int k = i; k < this->size(); k++)
+				{
+					this->els[k] = this->els[k + 1];
+				}
+				this->cur_size--;
+				for (int k = j-1; k < this->size(); k++)
+				{
+					this->els[k] = this->els[k + 1];
+				}
+				this->cur_size--;
+				if (i == 0)
+					i = -1;
+			}
+		}
+	}
+	return *this;
+}
+

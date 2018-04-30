@@ -28,8 +28,8 @@ void main()
 
 	Vector v3 = (v);
 
-	
-	short nz,answer;
+
+	short nz, answer;
 	do
 	{
 		SetConsoleTextAttribute(hConsole, (WORD)((21 << 4) | 46));
@@ -46,11 +46,11 @@ void main()
 
 		switch (nz)
 		{
-		case 1 :
+		case 1:
 		{
 			int index; double els;
 			cout << "\n\n1.реализация оператора[]\n";
-			cout<<"(если вы введете не соответсвующий индекс, элемент будет помещен в нулевой \nиндекс)\n";
+			cout << "(если вы введете не соответсвующий индекс, элемент будет помещен в нулевой \nиндекс)\n";
 			cout << "введите индекс: ";
 			cin >> index;
 			cout << "введите элемент: ";
@@ -60,8 +60,8 @@ void main()
 			for (int i = 0; i < v.size(); i++)
 				cout << v[i] << "\t";
 		}break;
-		
-		case 2 :
+
+		case 2:
 		{
 			cout << "\n\n2.реализация оператора +\n";
 			cout << "\n\nдан второй объект v2 класса Vector:\n";
@@ -81,7 +81,7 @@ void main()
 			{
 				cout << v2[i] << "\t";
 			}
-			v -v2;
+			v - v2;
 			cout << "\nОператор – удаляет из первого вектора значения, \nкоторые есть во втором векторе.\n";
 			for (int i = 0; i < v.size(); i++)
 				cout << v[i] << "\t";
@@ -89,12 +89,26 @@ void main()
 
 		case 4:
 		{
-			
+			int pos;
+			cout << "\n\n4.реализация оператора <<\n";
+			cout << "введите любой индекс: ";
+			cin >> pos;
+			v << pos;
+			for (int i = 0; i < v.size(); i++)
+				cout << v[i] << "\t";
+			cout << endl;
 		}break;
 
 		case 5:
 		{
-
+			double num;
+			cout << "\n\n5.реализация оператора >>\n";
+			cout << "введите любое число: ";
+			cin >> num;
+			v >> num;
+			for (int i = 0; i < v.size(); i++)
+				cout << v[i] << "\t";
+			cout << endl;
 		}break;
 
 		case 6:
@@ -107,10 +121,11 @@ void main()
 			}
 			int result = (v == v2);
 			cout << endl;
-			if (result == 1) 
+			if (result == 1)
 				cout << "два вектора равны\n";
-			else cout<<"эти векторы НЕ равны\n";
+			else cout << "эти векторы НЕ равны\n";
 		}break;
+
 		case 7:
 		{
 			cout << "\n\n7.реализация оператора ==\n";
@@ -124,33 +139,43 @@ void main()
 				cout << "два вектора НЕ равны\n";
 			else cout << "эти векторы равны\n";
 		}break;
+		
 		case 8:
 		{
-
+			v >> v[0];
+			v >> v[1];
+			cout << "\nмодифицируем объект v\n";
+			for (int i = 0; i < v.size(); i++)
+				cout << v[i] << "\t";
+			cout << "\n\n8.реализация оператора ~\n";
+			v.operator~();
+			for (int i = 0; i < v.size(); i++)
+				cout << v[i] << "\t";
+			cout << endl;
 		}break;
 		}
 		cout << "\n\nхотите продолжить?1/0 ";
 		cin >> answer;
 		system("cls");
 	} while (answer > 0);
-	
+
 
 	v[0] = 1.8;
 	v.at(1) = 5.4;
 
 	cout << "\nПОСЛЕ pushBack:\n";
-	for (int i = 0;i < v.size();i++)
+	for (int i = 0; i < v.size(); i++)
 		cout << v[i] << "\t";
 
 
 
 
 
-	
+
 
 
 	cout << "\n\nоператор сравнения для объектов v3 и v\n";
-	cout <<(v3 == v) << endl;;
+	cout << (v3 == v) << endl;;
 
 
 

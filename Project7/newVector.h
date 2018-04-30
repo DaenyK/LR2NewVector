@@ -39,7 +39,11 @@ public:
 
 	Vector operator+(Vector obj);
 	Vector operator-(Vector obj);
-	
+	Vector operator>>(double e);
+	Vector operator<<(double e);
+	Vector operator~();
+
+	//friend ostream& operator<<(ostream& os, Vector obj);
 
 	~Vector()
 	{
